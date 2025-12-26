@@ -22,6 +22,8 @@ public class GlobalExceptionHandler {
                 .body(new ApiError(Instant.now().toString(), 409, ex.getMessage()));
     }
 
+
+    //Atrapa a todas las excepciones y las agrupa en una traza de errores por si ocurren diferentes tipos de errores
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> validation(MethodArgumentNotValidException ex) {
         String msg = ex.getBindingResult().getFieldErrors().stream()

@@ -10,9 +10,15 @@ import java.time.LocalDateTime;
 @Table(name = "stay")
 public class Stay {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //Un vehículo
+    //solo puede tener una estancia ABIERTA
+    //.
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "vehicle_id", nullable = false, foreignKey = @ForeignKey(name="fk_stay_vehicle"))
     private Vehicle vehicle;
 
     @Column(name="entry_time", nullable = false)
