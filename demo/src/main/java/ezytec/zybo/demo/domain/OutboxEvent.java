@@ -2,11 +2,13 @@ package ezytec.zybo.demo.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name="outbox_events")
 public class OutboxEvent {
 
@@ -27,5 +29,8 @@ public class OutboxEvent {
 
     @Column(name="created_at", nullable = false)
     private LocalDateTime createdAt;
+
+    @Version
+    private Long version;
 
 }

@@ -13,6 +13,10 @@ spring:
         format_sql: true
     open-in-view: false
 
+api:
+  base-path: /api
+  version: v1
+
 logging:
   level:
     org.hibernate.SQL: warn

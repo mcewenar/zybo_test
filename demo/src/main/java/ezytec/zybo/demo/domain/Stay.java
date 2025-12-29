@@ -2,11 +2,13 @@ package ezytec.zybo.demo.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "stay")
 public class Stay {
 
@@ -36,5 +38,8 @@ public class Stay {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private StayStatus status;
+
+    @Version
+    private Long version;
 }
 

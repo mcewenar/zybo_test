@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/vehiculos")
+@RequestMapping(ApiPaths.VEHICLES)
 public class VehicleController {
 
     private final VehicleService service;
-
 
     @PostMapping
     public ResponseEntity<VehicleResponse> create(@Valid @RequestBody VehicleCreateRequest req) {

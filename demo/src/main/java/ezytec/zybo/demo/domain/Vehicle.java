@@ -2,10 +2,13 @@ package ezytec.zybo.demo.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "vehicle")
+@NoArgsConstructor
+@Table(name = "vehicles",
+        uniqueConstraints = {@UniqueConstraint(name="uk_vehicles_plate", columnNames = "plate")})
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +20,12 @@ public class Vehicle {
     //Un usuario puede parquear muchos vehículos, pero un vehículo pertenece a un solo usuario.
     //Muchos a uno
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false, foreignKey = @ForeignKey(name="vehic-user"))
+    @JoinColumn(name = "user_id", nullable = false, foreignKey = @ForeignKey(name="fk_vehicle_user"))
     //Por terminar
     private User user;
+
+    @Version
+    private Long version;
 
 }
 

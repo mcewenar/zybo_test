@@ -23,8 +23,7 @@ public class UserService {
     }
 
     public User get(Long id) {
-        return repo.findById(id).orElseThrow(
-                () -> new CustomExceptions.NotFoundException("User not found"));
+        return repo.findById(id).orElseThrow(() -> new CustomExceptions.NotFoundException("User not found"));
     }
 
     @Transactional
